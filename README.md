@@ -17,7 +17,7 @@ Sonarbyte is a simple and fast subdomain scanner written in go to extract subdom
 ```
 # Usage
 
-![](https://raw.githubusercontent.com/channyein1337/sonarbyte/main/image/sonarbyte.png)
+![](https://raw.githubusercontent.com/channyein1337/Sonarbyte/main/image/Sonarbytes.png)
 
 For a single domain
 ```
