@@ -8,10 +8,10 @@ Sonarbyte is a simple and fast subdomain scanner written in go to extract subdom
 
 # Install
 ```
-▶ go get github.com/channyein1337/Sonarbyte
+▶ go get github.com/channyein1337/sonarbyte
 ```
 ```
-▶ git clone https://github.com/channyein1337/Sonarbyte.git
+▶ git clone https://github.com/channyein1337/sonarbyte.git
 ▶ go build main.go
 ▶ sudo mv sonarbyte /usr/bin/sonarbyte
 ```
