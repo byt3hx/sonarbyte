@@ -29,7 +29,7 @@ For multiple domains
 ```
 Run with httpx
 ```
-▶ cat domain.txt | sonarbyte | sort -u | httpx
+▶ cat domain.txt | sonarbyte| httpx
 ```
 
 # Implement
