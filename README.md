@@ -24,7 +24,7 @@ Usage of sonarbyte:
   -df string
         Set the file
 ```
-![](https://raw.githubusercontent.com/channyein1337/Sonarbyte/main/image/Sonarbytes.png)
+![](https://raw.githubusercontent.com/channyein1337/sonarbyte/main/image/sonarbyte.png)
 
 For a single domain
 ```
