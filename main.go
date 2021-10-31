@@ -2,14 +2,62 @@ package main
 
 import(
 	"fmt"
+	"flag"
+	"sync"
 	"net/http"
 	"io/ioutil"
 	"encoding/json"
-	"bufio"
-	"flag"
 	"os"
-	"sync"
+	"bufio"
+	"time"
 )
+
+func main() {
+	var domainfile string
+	var domain string
+	flag.StringVar(&domain , "d" , "" , "Set the domain name")
+	flag.StringVar(&domainfile, "df" , "" , "Set the file")
+	flag.Parse()
+
+	if domain != "" {
+		sub , err := scan(domain)
+		if err != nil {
+			fmt.Println(err)
+		}
+		sort := unique(sub)
+		for _, finaldomain := range sort {
+			fmt.Println(finaldomain)
+		}
+	}
+
+	if domainfile != "" {
+		file, err := os.Open(domainfile)
+		if err != nil {
+			fmt.Println("File could not be read!")
+		}
+		defer file.Close()
+		time.Sleep(time.Millisecond * 10)
+
+		scanner := bufio.NewScanner(file)
+
+		for scanner.Scan() {
+			var domains []string
+			domains = append(domains, scanner.Text())
+			var wg sync.WaitGroup
+			for i := 0 ; i <= 0; i++ {
+				wg.Add(1)
+				go func() {
+					for _, finaldomain := range domains {
+						sorting(finaldomain)
+					}
+					wg.Done()
+				}()
+				wg.Wait()
+			} 
+		}
+	}
+	
+}
 
 func scan(domain string) ([]string, error) {
 	resp, err := http.Get(fmt.Sprintf("https://sonar.omnisint.io/subdomains/%s", domain))
@@ -50,37 +98,14 @@ func unique(strSlice []string) []string {
 	return list
 }
 
-func main() {
-	var domains []string
-	if flag.NArg() > 0 {
-		domains = []string{flag.Arg(0)}
-	} else {
-		sc := bufio.NewScanner(os.Stdin)
-		for sc.Scan() {
-			domains = append(domains, sc.Text())
-		}
-		if err := sc.Err(); err !=nil {
-			fmt.Fprintf(os.Stderr, "failed to read input: %s\n" , err)
-		}
+func sorting(domain string) {
+	sub , err := scan(domain)
+	if err != nil {
+		fmt.Println(err)
+	}
+	sort := unique(sub)
+	for _, finaldomain := range sort {
+		fmt.Println(finaldomain)
 	}
 
-	results := make(chan string)
-
-	var wg sync.WaitGroup 
-	for _, domain := range domains {
-		wg.Add(1)
-		go func (domain string) {
-			sub , err := scan(domain)
-			if err != nil {
-				fmt.Println(err)
-			}
-			sort := unique(sub)
-			for _, finaldomain := range sort {
-				fmt.Println(finaldomain)
-			}
-			defer wg.Done()
-		}(domain)
-	}
-	wg.Wait()
-	close(results)
 }
