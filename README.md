@@ -39,9 +39,12 @@ Run with httpx
 ▶ sonarbyte -df domain.txt | httpx
 ```
 
-# Updated Feature
+# Updates Feature
 - Add new flags
 
+# Future plan
+- New Services
+- File output
 
 # Implement
 
