@@ -32,6 +32,10 @@ Run with httpx
 ▶ cat domain.txt | sonarbyte| httpx
 ```
 
+# Updated Feature
+- Add new flags
+
+
 # Implement
 
 https://omnisint.io/
