@@ -16,7 +16,14 @@ Sonarbyte is a simple and fast subdomain scanner written in go to extract subdom
 ▶ sudo mv sonarbyte /usr/bin/sonarbyte
 ```
 # Usage
-
+```
+▶ sonarbyte -h
+Usage of sonarbyte:
+  -d string
+        Set the domain name
+  -df string
+        Set the file
+```
 ![](https://raw.githubusercontent.com/channyein1337/Sonarbyte/main/image/Sonarbytes.png)
 
 For a single domain
