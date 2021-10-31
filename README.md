@@ -21,15 +21,15 @@ Sonarbyte is a simple and fast subdomain scanner written in go to extract subdom
 
 For a single domain
 ```
-▶ echo hackerone.com | sonarbyte 
+▶ sonarbyte -d hackerone.com 
 ```
 For multiple domains
 ```
-▶ cat domain.txt | sonarbyte
+▶ sonarbyte -df domain.txt
 ```
 Run with httpx
 ```
-▶ cat domain.txt | sonarbyte| httpx
+▶ sonarbyte -df domain.txt | httpx
 ```
 
 # Updated Feature
